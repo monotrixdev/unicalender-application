@@ -36,7 +36,7 @@ async function githubLogin() {
 }
 
   return (
-    <section className='w-full h-full bg-zinc-50 flex flex-col items-center justify-center px-5 py-20'>
+    <section className='w-full h-100 bg-zinc-50 flex flex-col items-center justify-center px-5 py-20'>
       <div className='w-full overflow-hidden relative sm:w-[400px] flex flex-col justify-start bg-zinc-100 border border-blue-200 rounded-xl px-4 py-5'>
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-blue-500/20 blur-3xl rounded-full pointer-events-none" />
           <div className='absolute top-20 left-1/2 -translate-x-1/2 w-30 h-30 bg-orange-500/20 blur-3xl rounded-full pointer-events-none'/>
