@@ -1,23 +1,21 @@
 import React from 'react'
 
 const AuthLayout = ({
-children,
+    children
 }: {
     children: React.ReactNode
 }) => {
   return (
     <main>
-        <div className='w-full bg-slate-50 border-b border-zinc-200 px-4 py-2 flex justify-between items-center'>
-            <div className='flex space-x-2 items-center'>
-                <div className='px-3 py-1 font-sans font-semibold bg-zinc-900 text-white w-fit rounded-sm'>
-                X
+        <header className='sticky flex items-center top-0 z-50 w-full bg-zinc-50 border-b border-zinc-200 px-5 py-2 justify-between'>
+            <div className='w-fit space-x-2 flex items-center justify-center'>
+                <div className='bg-gradient-to-br from-zinc-500 via-zinc-800 to-zinc-900 text-white px-3 py-1 font-sans rounded-lg font-semibold'>
+                    X
+                </div>
+                <span className='font-semibold text-sm text-zinc-900'>XuanVex</span>
             </div>
-            <span className='text-sm font-semibold text-zinc-900'>XuanVex</span>
-            </div>
-            <div className='text-sm text-zinc-500'>
-                Secure Authentication
-            </div>
-        </div>
+            <span className='text-sm font-sans text-zinc-500'>Secure Authentication</span>
+        </header>
         {children}
     </main>
   )

@@ -36,7 +36,7 @@ async function githubLogin() {
 }
 
   return (
-    <section className='w-full h-100 bg-zinc-50 flex flex-col items-center justify-center px-5 py-20'>
+    <section className='w-full h-screen bg-zinc-50 flex flex-col items-center justify-center px-5 py-20'>
       <div className='w-full overflow-hidden relative sm:w-[400px] flex flex-col justify-start bg-zinc-100 border border-blue-200 rounded-xl px-4 py-5'>
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-blue-500/20 blur-3xl rounded-full pointer-events-none" />
           <div className='absolute top-20 left-1/2 -translate-x-1/2 w-30 h-30 bg-orange-500/20 blur-3xl rounded-full pointer-events-none'/>
@@ -47,7 +47,7 @@ async function githubLogin() {
         <span className='font-sans font-semibold text-xl mt-2 text-zinc-900 tracking-tight'>Welcome back</span>
         <p className='text-sm font-sans mt-0 text-muted-foreground tracking-tight'>Sign in to your account using one of the platforms below.</p>
         <div className='w-full grid grid-cols-1 mt-3 sm:grid-cols-2 gap-2'>
-          <Button disabled={githubLoader} onClick={githubLogin} className='w-full sm:w-full flex items-center py-4 justify-center font-sans text-sm font-medium'>
+          <Button disabled={githubLoader} onClick={githubLogin} className='w-full sm:w-full flex items-center py-4 justify-center font-sans text-sm font-medium bg-gradient-to-br from-zinc-500 via-zinc-800 to-zinc-900'>
             {githubLoader ? <Spinner/> : <Image className='w-5 h-5' width={0} height={0} src='/github.svg' alt={''} />} 
             {githubLoader ? 'Connecting...' : "Connect with Github"}
           </Button>
