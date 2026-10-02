@@ -12,7 +12,7 @@ children,
                 <div className='px-3 py-1 font-sans font-semibold bg-zinc-900 text-white w-fit rounded-sm'>
                 X
             </div>
-            <span className='text-sm font-medium text-zinc-900'>XuanVex</span>
+            <span className='text-sm font-semibold text-zinc-900'>XuanVex</span>
             </div>
             <div className='text-sm text-zinc-500'>
                 Secure Authentication
