@@ -40,7 +40,8 @@ async function githubLogin() {
       <div className='w-full overflow-hidden relative sm:w-[400px] flex flex-col justify-start bg-zinc-100 border border-blue-200 rounded-xl px-4 py-5'>
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-32 bg-blue-500/20 blur-3xl rounded-full pointer-events-none" />
           <div className='absolute top-20 left-1/2 -translate-x-1/2 w-30 h-30 bg-orange-500/20 blur-3xl rounded-full pointer-events-none'/>
-        <div className='space-x-2 bg-white border border-blue-200 w-fit p-1.5 rounded-lg'>
+          <div className='relative z-10'>
+            <div className='space-x-2 bg-white border border-blue-200 w-fit p-1.5 rounded-lg'>
            <CircleUserRound className='w-5 h-5 text-blue-600'/>
         </div>
         
@@ -60,6 +61,8 @@ async function githubLogin() {
           <span className='text-zinc-300'>•</span>
           <span>Secure Authentication</span>
         </div>
+        <div/>
+          </div>
       </div>
     </section>
   )
