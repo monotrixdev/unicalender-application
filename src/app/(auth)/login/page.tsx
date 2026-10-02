@@ -4,13 +4,13 @@ import { CircleUserRound, Images } from 'lucide-react'
 import { Sansation } from 'next/font/google'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import Spinner from '../components/spinner'
 import { toast } from '@/components/ui/toast';
 import { promiseHooks } from 'v8';
 import { promises } from 'dns';
 import { resolve } from 'path';
 import { setegid } from 'process';
 import { signIn } from 'next-auth/react';
+import Spinner from '@/app/components/spinner';
 
 const Login = () => {
   const [githubLoader, setGithubLoader] = useState(false);
