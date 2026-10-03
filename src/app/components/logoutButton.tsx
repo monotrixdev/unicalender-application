@@ -16,7 +16,7 @@ const LogoutButton = async () => {
 
 
   return (
-    <div onClick={logout}>
+    <div className='w-fit flex items-center space-x-2' onClick={logout}>
         <LogOut className='w-2 h-5'/>
         <span>Log out</span>
     </div>
