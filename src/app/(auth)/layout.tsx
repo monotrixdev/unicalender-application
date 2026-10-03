@@ -29,7 +29,7 @@ const  AuthLayout = async ({
                 </span>
                 )}
             {session?.user && (
-                <LoginIcon />
+                <LoginIcon/>
             )}
         </header>
         {children}
