@@ -3,10 +3,13 @@ import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { requireAuth } from '@/lib/hooks'
 import { LayoutDashboard, LogOut, Settings, UserRound } from 'lucide-react'
+import { signOut } from 'next-auth/react'
 import React from 'react'
+import LogoutButton from './logoutButton'
+import { auth } from '@/lib/auth'
 
 const LoginIcon = async () => {
-    const session = await requireAuth();
+    const session = await auth();
 
     const menuIcon = [
         {
@@ -59,8 +62,7 @@ const LoginIcon = async () => {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem variant="destructive">
-                    <LogOut className='w-5 h-5' />
-                    Log 0ut
+                    <LogoutButton />
                 </DropdownMenuItem>
             </DropdownMenuGroup>
         </DropdownMenuContent>

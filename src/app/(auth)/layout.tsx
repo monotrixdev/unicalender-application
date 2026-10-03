@@ -3,13 +3,14 @@ import { requireAuth } from '@/lib/hooks';
 import { redirect } from 'next/navigation';
 import React from 'react'
 import LoginIcon from '../components/avaterUI';
+import { auth } from '@/lib/auth';
 
 const  AuthLayout = async ({
     children
 }: {
     children: React.ReactNode
 }) => {
-    const session = await requireAuth();
+    const session = await auth();
 
 
   return (
@@ -22,8 +23,14 @@ const  AuthLayout = async ({
                 </div>
                 <span className='font-semibold text-sm text-zinc-900'>Uni<span className='text-zinc-500 font-medium'>Calender</span></span>
             </div>
-            {!session?.user? "<span className='text-sm font-sans text-zinc-500'>Secure Authentication</span>" : ''}
-            <LoginIcon />
+             {!session?.user && (
+                <span className="text-sm font-sans text-zinc-500">
+                    Secure Authentication
+                </span>
+                )}
+            {session?.user && (
+                <LoginIcon />
+            )}
         </header>
         {children}
     </main>
