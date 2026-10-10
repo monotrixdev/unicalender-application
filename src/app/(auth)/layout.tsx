@@ -12,10 +12,10 @@ const  AuthLayout = async ({
 }) => {
     const session = await auth();
 
-    if (session?.user) {
-        redirect("/dashboard");
-        return;
-    }
+    // if (session?.user) {
+    //     redirect("/dashboard");
+    //     return;
+    // }
 
 
   return (
