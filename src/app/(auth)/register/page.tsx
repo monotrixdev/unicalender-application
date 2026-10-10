@@ -8,7 +8,7 @@ const RegisterPage = () => {
             <div className='w-60 h-60 bg-blue-500/20 absolute -top-20 blur-3xl rounded-full pointer-events-none'/>
             <div className='w-40 h-40 absolute rounded-full bg-orange-500/20 blur-3xl top-20 left-1/2 pointer-events-none'/>
             <div className='relative z-20'>
-                <div className='w-full'>
+                <div className='w-full border'>
                     <span className='w-full bg-white px-1.5 py-1.'><UserCircle2Icon className='w-5 h-5' /></span>
                 </div>
             </div>
