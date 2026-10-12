@@ -1,6 +1,8 @@
 import { MenuIcon, PanelRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import LogoutButton from "./logoutButton";
+import LoginIcon from "./avaterUI";
 
 export function Navbar() {
     return(
@@ -12,7 +14,8 @@ export function Navbar() {
                 />
                 <h4 className="font-semibold text-green-500">Uni<span className="font-normal tracking-tight text-zinc-700">Calender</span></h4>
             </Link>
-            <div>
+            <div className="flex items-center gap-4">
+                <LoginIcon />
                 <PanelRight className="w-5 h-5"/>
             </div>
         </div>
