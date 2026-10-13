@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   title: "UniCalender",
   description:
     "UniCalender is a scheduling platform where anyone can share a custom link, view the next 20 days of availability, and schedule meetings.",
+  icons: {
+    icon: [
+      {
+        url: '/icon.png', sizes: 'any'
+      },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' }
+    ],
+    apple: '/icon.png',
+    shortcut: '/icon.png'
+  }
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
