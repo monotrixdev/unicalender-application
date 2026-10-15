@@ -1,6 +1,7 @@
 'use client';
 import { auth } from '@/lib/auth';
 import { Timeline, Timer } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { expectNoPendingImmediates } from 'next/dist/server/node-environment-extensions/fast-set-immediate.external';
 import Image from 'next/image';
 import { title } from 'process';
@@ -142,10 +143,12 @@ const selectedObjects = dates.find((data) => getNumberDate(data) == selectDate)
   {/* Online Indicator */}
   <span className="absolute bottom-[3px] right-[3px] z-20 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950" />
 </div>
-
+<div className='relative'>
             <h1 className='font-bold text-3xl tracking-tight mt-2'>Sabbir Ahmed</h1>
             <p className='text-sm text-zinc-400'>View the schedule and availabilite for the next 30 days.</p>
             <p className='text-sm text-zinc-500 mt-2'>Timezone: Aia/Dhaka(UTC+6)</p>
+            <button className='p-1 px-2 text-sm flex items-center text-green-500 rounded-full bg-green-500/10 border border-green-500/10 absolute top-0 right-0 gap-1'> <Globe className="w-5 h-5"/>Public Link</button>
+</div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6">
 
                 {
