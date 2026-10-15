@@ -1,5 +1,8 @@
 'use client';
-import { Timeline } from 'lucide-react';
+import { auth } from '@/lib/auth';
+import { Timeline, Timer } from 'lucide-react';
+import { expectNoPendingImmediates } from 'next/dist/server/node-environment-extensions/fast-set-immediate.external';
+import Image from 'next/image';
 import { title } from 'process';
 import React, { useState } from 'react'
 
@@ -39,7 +42,7 @@ import React, { useState } from 'react'
         
     }
 
-const publicShedulePage = () => {
+const publicShedulePage =  () => {
     const [selectDate, setSectedDate] = useState(
         new Date().toLocaleDateString("en-CA")
     );
@@ -69,14 +72,20 @@ const publicShedulePage = () => {
     return `${year}-${month}-${day}`;
 }
 
+const selectedEvents = dummyEvents[selectDate] ?? [];
+const selectedObjects = dates.find((data) => getNumberDate(data) == selectDate)
 
 
+  //  const session = await auth();
 
 
   return (
     <main className='min-h-screen bg-zinc-950 px-6 py-12 text-white'>
         <div className='mx-auto max-w-5xl'>
-            <h1 className='font-bold text-3xl tracking-tight'>Public Schedule</h1>
+            <div>
+                <Image className='ring-1 ring-violet-500 rounded-xl' width={60} height={60} src="https://xuanvex.github.io/images/img.png" alt='Profile Images'/>
+            </div>
+            <h1 className='font-bold text-3xl tracking-tight mt-2'>Public Schedule</h1>
             <p className='text-sm text-zinc-400'>View the next 30 days timezone.</p>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6">
 
@@ -100,19 +109,18 @@ const publicShedulePage = () => {
                                 </p>
                                 <h2 className='text-2xl font-semibold mt-2'>
                                     {
-                                        date.toLocaleDateString('en-US', {
-                                            month: '2-digit'
-                                        })
+                                        date.getDate()
                                     }
                                 </h2>
                                 <p className='text-sm text-zinc-500 mt-2'>
                                     {
                                         date.toLocaleDateString('en-US', {
-                                            month: 'short'
+                                            month: 'short',
+                                            year: "numeric"
                                         })
                                     }
                                 </p>
-                                <span className={`flex w-full h-[5px] mt-2 rounded-full ${events.length > 0 ? 'bg-green-500' : 'bg-zinc-700'}`}></span>
+                                <span className={`flex w-full h-[5px] mt-2 rounded-full ${events.length > 0 ? 'bg-red-500' : 'bg-zinc-700'}`}></span>
 
                             </div>
                         )
@@ -124,15 +132,59 @@ const publicShedulePage = () => {
             <div className='w-full flex items-center justify-between gap-2'>
                 <div className=''>
                     <p className='text-xs text-zinc-500'>Selected date</p>
-                    <h1 className='text-sm mt-1 font-semibold'>Friday, November, 10, 26</h1>
+                    <h1 className='text-sm mt-1 font-semibold'>
+                          {selectedObjects ? selectedObjects.toLocaleDateString("en-US", {
+                            weekday: 'long',
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric'
+                          }
+                          ): selectDate}
+                    </h1>
                 </div>
-                <button className='p-1.5 border border-white/5 bg-white/5 text-xs text-zinc-400 rounded-xl'>0 schedule items</button>
+                <button className='p-1.5 border flex items-center gap-1 border-white/5 bg-white/5 text-xs text-zinc-400 rounded-xl'>
+                <Timer className='w-5 h-5'/>
+                {
+                    selectedEvents.length
+                } schedule items</button>
             </div>
-            <div     className='border border-white/5 px-4 py-5 mt-5 rounded-xl flex items-center justify-center flex-col'>
+            {
+                selectedEvents.length > 0 ? (
+                    <div className='mt-5 space-y-2'>
+                        {
+                            selectedEvents.map((event, index) => (
+                                <div key={index} className='w-full px-4 py-2 rounded-md border border-white/10 bg-zinc-900/70 flex items-start justify-between gap-2'>
+                                    <div className={`w-1 self-stretch rounded-full ${event.type === 'busy' ? 'bg-red-500' : "bg-green-500"}`}></div>
+                                    <div className='w-full'>
+                                        <p className='text-xs text-zinc-400'>
+                                            {
+                                                event.time
+                                            }
+                                        </p>
+                                        <h2 className='text-sm font-semibold mt-2 break-words'>
+                                            {
+                                                event.title
+                                            }
+                                        </h2>
+                                        <p className={`text-xs mt-2 ${event.type === 'busy' ? 'text-red-500' : 'text-green-500'}`}>
+                                            {
+                                                event.type === 'busy' ? 'Busy' : "Available"
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                ) : (
+                                <div     className='border border-white/10 bg-zinc-900/75 px-4 py-12 mt-5 rounded-xl flex items-center justify-center flex-col'>
               <Timeline  className='w-5 h-5 text-zinc-600'/>
               <h4 className='text-sm mt-2 font-semibold text-zinc-400'>No Schedule available</h4>
               <p className='text-xs text-muted-foreground mt-1'>There are no schedule entry this data.</p>
             </div>
+                )
+            }
+            
             </div>
         </div>
 
