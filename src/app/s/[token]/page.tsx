@@ -11,7 +11,7 @@ import React, { useState } from 'react'
     }
 
     const dummyEvents: Record<string, ScheduleEvents[]> = {
-        "2026-10-25": [
+        "2026-10-15": [
             {
                 time: "09:00 AM",
                 title: "Available",
@@ -40,7 +40,9 @@ import React, { useState } from 'react'
     }
 
 const publicShedulePage = () => {
-    const [selectDate, setSectedDate] = useState("");
+    const [selectDate, setSectedDate] = useState(
+        new Date().toLocaleDateString("en-CA")
+    );
     
 
     const today = new Date();
@@ -57,10 +59,15 @@ const publicShedulePage = () => {
 
     }
 
-    function getNumberDate(date: any) {
-        const dat = date.slice(0, 10);
-        return dat;
-    }
+    function getNumberDate(date: Date | string): string {
+    const selectedDate = typeof date === "string" ? new Date(date) : date;
+
+    const year = selectedDate.getFullYear();
+    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    const day = String(selectedDate.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+}
 
 
 
@@ -73,35 +80,44 @@ const publicShedulePage = () => {
             <p className='text-sm text-zinc-400'>View the next 30 days timezone.</p>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6">
 
-            {
-                dates.map((date) => (
-                    
-                       
-                    
-                    <div onClick={() => seeSchedule(date.toISOString())} key={date.toISOString()}
-                    className=' bg-transparent border border-white/10 rounded-xl p-6'
-                    >
-                        <p className='text-sm text-zinc-400'>
-                            {date.toLocaleDateString("en-US", {
-                                weekday: 'short'
-                            })}
-                        </p>
-                        <h2 className='text-2xl mt-2 font-bold'>
-                            {
-                                date.getDate()
-                            }
-                        </h2>
-                        <p className='mt-2 text-sm text-zinc-500'>
-                            {
-                                date.toLocaleDateString("en", {
-                                    month: "short"
-                                })
-                            }
-                        </p>
-                        <span className={`text-xs w-full flex h-[4px] rounded-full mt-2 ${dummyEvents[getNumberDate(date.toISOString())]} ?? "bg-red-500" : "bg-green-500"`}></span>
-                    </div>
-                ))
-            }
+                {
+                    dates.map((date) => {
+                        const dateKey = getNumberDate(date);
+                        const isSelected = selectDate === dateKey;
+                        const events = dummyEvents[dateKey] ?? [];
+
+
+                        return (
+                            <div onClick={() => setSectedDate(dateKey)} key={dateKey} className={`p-4 rounded-xl transition-all duration-200
+                            ${isSelected ? 'border border-violet-500 bg-violet-500/10 ring-1 ring-violet-500/30' : 'bg-white/5 border border-white/10 hover:bg-white/5 hover:border-white/20'}
+                            `}>
+                                <p className='text-sm text-zinc-400'>
+                                    {
+                                        date.toLocaleDateString('en-US', {
+                                            weekday: 'short'
+                                        })
+                                    }
+                                </p>
+                                <h2 className='text-2xl font-semibold mt-2'>
+                                    {
+                                        date.toLocaleDateString('en-US', {
+                                            month: '2-digit'
+                                        })
+                                    }
+                                </h2>
+                                <p className='text-sm text-zinc-500 mt-2'>
+                                    {
+                                        date.toLocaleDateString('en-US', {
+                                            month: 'short'
+                                        })
+                                    }
+                                </p>
+                                <span className={`flex w-full h-[5px] mt-2 rounded-full ${events.length > 0 ? 'bg-green-500' : 'bg-zinc-700'}`}></span>
+
+                            </div>
+                        )
+                    })
+                }
 
 </div>
             <div className='w-full border border-white/10 mt-5 px-4 py-3 bg-white/5 rounded-xl'>
