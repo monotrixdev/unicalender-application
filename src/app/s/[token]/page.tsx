@@ -145,7 +145,7 @@ const selectedObjects = dates.find((data) => getNumberDate(data) == selectDate)
 
             <h1 className='font-bold text-3xl tracking-tight mt-2'>Sabbir Ahmed</h1>
             <p className='text-sm text-zinc-400'>View the schedule and availabilite for the next 30 days.</p>
-            <p className='text-sm text-zinc-500'>Timezone: Aia/Dhaka(UTC+6)</p>
+            <p className='text-sm text-zinc-500 mt-2'>Timezone: Aia/Dhaka(UTC+6)</p>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6">
 
                 {
