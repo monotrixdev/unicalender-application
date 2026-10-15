@@ -82,9 +82,67 @@ const selectedObjects = dates.find((data) => getNumberDate(data) == selectDate)
   return (
     <main className='min-h-screen bg-zinc-950 px-6 py-12 text-white'>
         <div className='mx-auto max-w-5xl'>
-            <div>
-                <Image className='ring-1 ring-violet-500 rounded-xl' width={60} height={60} src="https://xuanvex.github.io/images/img.png" alt='Profile Images'/>
-            </div>
+
+<div className="group relative flex h-[76px] w-[76px] shrink-0 items-center justify-center">
+
+  {/* Ambient Glow */}
+  <div className="absolute inset-2 rounded-full bg-violet-500/20 blur-xl transition-all duration-500 group-hover:bg-violet-500/40" />
+
+  {/* Premium SVG Frame */}
+  <svg
+    viewBox="0 0 100 100"
+    fill="none"
+    className="absolute inset-0 h-full w-full animate-[spin_18s_linear_infinite] transition-transform duration-500 group-hover:scale-105"
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="profile-gradient" x1="0" y1="0" x2="100" y2="100">
+        <stop offset="0%" stopColor="#c4b5fd" />
+        <stop offset="50%" stopColor="#8b5cf6" />
+        <stop offset="100%" stopColor="#4f46e5" />
+      </linearGradient>
+    </defs>
+
+    <circle
+      cx="50"
+      cy="50"
+      r="46"
+      stroke="url(#profile-gradient)"
+      strokeWidth="1.2"
+      strokeDasharray="35 8 12 8"
+      opacity="0.9"
+    />
+
+    <circle
+      cx="50"
+      cy="50"
+      r="41"
+      stroke="#a78bfa"
+      strokeWidth="0.6"
+      strokeDasharray="2 5"
+      opacity="0.6"
+    />
+
+    <circle cx="50" cy="4" r="2.5" fill="#c4b5fd" />
+    <circle cx="50" cy="96" r="1.8" fill="#8b5cf6" />
+  </svg>
+
+  {/* Avatar */}
+  <div className="relative rounded-xl bg-gradient-to-br from-violet-400 via-violet-600 to-indigo-600 p-[1.5px] shadow-lg shadow-violet-500/20 transition-all duration-300 group-hover:shadow-violet-500/40">
+    <Image
+      className="relative block rounded-[10px] object-cover"
+      width={60}
+      height={60}
+      src="https://xuanvex.github.io/images/img.png"
+      alt="Profile image"
+      priority
+    />
+  </div>
+
+  {/* Online Indicator */}
+  <span className="absolute bottom-[3px] right-[3px] z-20 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950" />
+</div>
+
             <h1 className='font-bold text-3xl tracking-tight mt-2'>Public Schedule</h1>
             <p className='text-sm text-zinc-400'>View the next 30 days timezone.</p>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6">
