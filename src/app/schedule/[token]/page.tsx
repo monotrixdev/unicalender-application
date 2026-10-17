@@ -11,6 +11,7 @@ Video,
 ChevronLeft,
 ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
 
 const days = [
 { day: "Mon", date: 12 },
@@ -45,8 +46,8 @@ WebkitMaskImage:
   <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/85 backdrop-blur-xl">
     <nav className="mx-auto flex h-[68px] w-full max-w-5xl min-w-0 items-center justify-between gap-4 px-4 sm:px-8">
       <a href="#" className="flex min-w-0 items-center gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white">
-          <CalendarDays size={18} strokeWidth={1.8} />
+        <div>
+          <Image width={30} height={20} src='/icon.png' alt="Avatar Images" />
         </div>
 
         <span className="truncate text-[15px] font-semibold tracking-tight">

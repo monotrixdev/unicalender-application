@@ -10,7 +10,7 @@ export async function Navbar() {
     return(
         <div className="flex sticky top-0 z-30 px-4 py-2 items-center border-b justify-between border-zinc-200 bg-zinc-50">
             <Link className="flex items-center space-x-2" href="/">
-                <Image className="-rotate-91 hover:border-2" width={30} height={30} 
+                <Image className="hover:border-2" width={30} height={30} 
                  src='/icon.png'
                  alt="Logo"
                 />
