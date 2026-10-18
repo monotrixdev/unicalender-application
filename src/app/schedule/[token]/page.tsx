@@ -5,7 +5,7 @@ import { Clock3, MapPin, Globe2, ChevronDown } from "lucide-react";
 const ScedulePage = () => {
   return (
     <main className="flex min-h-screen items-center justify-center bg-zinc-50 bg-zinc-50 px-4 py-10 text-zinc-900">
-      <section className="mx-auto flex w-full max-w-5xl overflow-hidden rounded-2xl border border-zinc-200">
+      <section className="mx-auto flex w-full max-w-5xl overflow-hidden bg-white rounded-2xl border border-zinc-200">
         {/* Profile and Meeting Information */}
         <div className="flex w-full max-w-sm flex-col gap-5 p-7 sm:p-9 bg-zinc-50">
           {/* Profile */}
