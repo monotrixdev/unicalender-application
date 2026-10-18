@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon.png', sizes: 'any'
+        url: '/icon.svg', sizes: 'any'
       },
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' }
+      { url: '/icon.svg', type: 'image/png', sizes: '32x32' }
     ],
-    apple: '/icon.png',
-    shortcut: '/icon.png'
+    apple: '/icon.svg',
+    shortcut: '/icon.svg'
   }
 };
 

@@ -25,7 +25,7 @@ const  AuthLayout = async ({
         <header className='sticky flex items-center top-0 z-50 w-full border-b border-zinc-200 px-5 py-2 justify-between bg-zinc-100'>
             <div className='w-fit space-x-2 flex items-center justify-center'>
                 <div>
-                    <Image width={30} height={30} src='/icon.png' alt='Brand Icons' />
+                    <Image width={30} height={30} src='/icon.svg' alt='Brand Icons' />
                 </div>
                 <span className='font-semibold text-sm text-zinc-900'>Uni<span className='text-zinc-500 font-medium'>Calender</span></span>
             </div>
